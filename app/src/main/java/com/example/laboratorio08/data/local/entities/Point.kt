@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Point(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val environmentId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val environmentId: Long,
     val x: Int,
     val y: Int
 )
