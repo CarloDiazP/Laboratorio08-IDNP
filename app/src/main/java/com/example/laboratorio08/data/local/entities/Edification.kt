@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Edification(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
     val description: String,
     val latitude: Double,
     val longitude: Double,
     val image: String,
-    val planId: Int
+    val planId: Long
 )
