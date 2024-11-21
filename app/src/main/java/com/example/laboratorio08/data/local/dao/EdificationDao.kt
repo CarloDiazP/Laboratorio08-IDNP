@@ -20,12 +20,16 @@ interface EdificationDao {
 
     @Delete
     suspend fun deleteEdification(edification: Edification)
-
+/*
     @Transaction
     @Query("SELECT * FROM Edification")
     suspend fun getAllEdifications(): List<Edification>
-
+*/
     @Transaction
     @Query("SELECT * FROM Edification WHERE id = :edificationId")
     suspend fun getEdificationWithPlan(edificationId: Long): EdificationWithPlan?
+
+    @Transaction
+    @Query("SELECT * FROM Edification")
+    suspend fun getAllEdificationsWithPlans(): List<EdificationWithPlan>
 }

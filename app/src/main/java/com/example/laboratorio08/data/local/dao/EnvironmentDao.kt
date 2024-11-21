@@ -20,11 +20,15 @@ interface EnvironmentDao {
 
     @Delete
     suspend fun deleteEnvironment(environment: Environment)
-
+/*
     @Query("SELECT * FROM Environment")
     suspend fun getAllEnvironments(): List<Environment>
-
+*/
     @Transaction
     @Query("SELECT * FROM Environment WHERE id = :environmentId")
     suspend fun getEnvironmentWithPoints(environmentId: Long): EnvironmentWithPoints
+
+    @Transaction
+    @Query("SELECT * FROM Environment")
+    suspend fun getAllEnvironmentsWithPoints(): List<EnvironmentWithPoints>
 }

@@ -23,11 +23,15 @@ interface PlanDao {
 
     @Delete
     suspend fun deletePlan(plan: Plan)
-
+/*
     @Query("SELECT * FROM planes")
     suspend fun getAllPlans(): List<Plan>
-
+*/
     @Transaction
     @Query("SELECT * FROM planes WHERE id = :planId")
     suspend fun getPlanWithEnvironments(planId: Long): PlanWithEnvironments
+
+    @Transaction
+    @Query("SELECT * FROM planes")
+    suspend fun getAllPlansWithEnvironments(): List<PlanWithEnvironments>
 }

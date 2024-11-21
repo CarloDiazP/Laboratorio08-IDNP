@@ -19,6 +19,9 @@ interface PointDao {
     @Delete
     suspend fun deletePoint(point: Point)
 
+    @Query("SELECT * FROM Point")
+    suspend fun getAllPoints(): List<Point>
+
     @Query("SELECT * FROM Point WHERE environmentId = :environmentId")
     suspend fun getPointsByEnvironment(environmentId: Long): List<Point>
 }
