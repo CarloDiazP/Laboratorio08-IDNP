@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity() {
     private suspend fun loadAndDisplayData() {
         // Inserción de datos de ejemplo
         val planId = db.planDao().insertPlan(Plan())
-        val currentMilisic = System.currentTimeMillis()
+        val currentMillis = System.currentTimeMillis()
         val edification = Edification(
-            name = "Catedral ${currentMilisic}",
-            description = "Catedral ${currentMilisic} descripción",
+            name = "Catedral ${currentMillis}",
+            description = "Catedral ${currentMillis} descripción",
             latitude = 12.3456,
             longitude = 65.4321,
             image = "catedral.png",
