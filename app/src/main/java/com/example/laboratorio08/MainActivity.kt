@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Inserción de datos de ejemplo
             val planId = db.planDao().insertPlan(Plan())
-
+            Log.d("planId", "$planId")
             val edification = Edification(
                 name = "Catedral 1",
                 description = "Catedral 1 descripcion",
@@ -39,7 +39,9 @@ class MainActivity : AppCompatActivity() {
                 image = "catedral.png",
                 planId = planId
             )
-            db.edificationDao().insertEdification(edification)
+
+            val edification1 = db.edificationDao().insertEdification(edification)
+
 
             val environment1 = Environment(
                 planId = planId,
@@ -47,14 +49,16 @@ class MainActivity : AppCompatActivity() {
                 description = "Descripcion ambiente 1",
                 image = "ambiente1.png"
             )
+            Log.d("environment1", "$environment1")
             val environment2 = Environment(
                 planId = planId,
                 title = "Ambiente 2",
                 description = "Descripcion ambiente 2",
                 image = "ambiente 2.png"
             )
+
             val environment1Id = db.environmentDao().insertEnvironment(environment1)
-            db.environmentDao().insertEnvironment(environment2)
+            val environment2Id = db.environmentDao().insertEnvironment(environment2)
 
             val point1 = Point(environmentId = environment1Id, x = 10, y = 20)
             val point2 = Point(environmentId = environment1Id, x = 30, y = 40)
@@ -62,11 +66,11 @@ class MainActivity : AppCompatActivity() {
             db.pointDao().insertPoint(point2)
 
             // Consulta Uno-a-Uno: Obtener Edification con su Plan
-            val edificationWithPlan = db.edificationDao().getEdificationWithPlan(edification.id)
+            val edificationWithPlan = db.edificationDao().getEdificationWithPlan(edification1)
             Log.d("MainActivity", "Edificación con su plan: $edificationWithPlan")
 
             // Consulta Uno-a-Muchos: Obtener Environment con sus Points
-            val environmentWithPoints = db.environmentDao().getEnvironmentWithPoints(environment1.id)
+            val environmentWithPoints = db.environmentDao().getEnvironmentWithPoints(environment1Id)
             Log.d("MainActivity", "Environment con puntos: $environmentWithPoints")
 
             // Consulta Uno-a-Muchos: Obtener Plan con sus Environments

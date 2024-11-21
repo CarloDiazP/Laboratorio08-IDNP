@@ -27,5 +27,5 @@ interface EdificationDao {
 
     @Transaction
     @Query("SELECT * FROM Edification WHERE id = :edificationId")
-    suspend fun getEdificationWithPlan(edificationId: Long): EdificationWithPlan
+    suspend fun getEdificationWithPlan(edificationId: Long): EdificationWithPlan?
 }
